@@ -2,6 +2,7 @@ import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras import models, layers
 import matplotlib.pyplot as plt
+import numpy as np
 #from tensorflow import keras
 from tensorflow.keras import layers
 #from tensorflow.keras.layers.experimental import preprocessing
@@ -180,7 +181,7 @@ for images_batch, labels_batch in test_ds.take(1):
     first_label = labels_batch[0].numpy()
 
     print("First image to predict")
-    plt.iamshow(first_image)
+    plt.imshow(first_image)
     print("First image actual label: ", class_names[first_label])
 
     batch_prediction = model.predict(images_batch)   #model will predict for 32 images
@@ -210,4 +211,7 @@ for images, labels in test_ds.take(1):
         plt.title(f"Actual: {actual_class},\n Predicted: {predicted_class}. \nConfidence: {confidence}%")
         plt.axis("off")
 
-
+"""
+#Save Model
+model.save('model.h5')
+"""
